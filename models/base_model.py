@@ -7,7 +7,7 @@ import cmd
 from datetime import datetime
 from uuid import uuid4
 import json
-from models import storage
+import models
 
 
 class BaseModel():
@@ -39,7 +39,7 @@ class BaseModel():
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-        storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """Return string of info about model"""
@@ -49,14 +49,15 @@ class BaseModel():
     def save(self):
         """Update instance with updated time & save to serialized file"""
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """Return dic with string formats of times; add class info to dic"""
-        self.created_at = self.created_at.isoformat()
-        self.updated_at = self.updated_at.isoformat()
         dic = {}
         dic["__class__"] = self.__class__.__name__
         for k, v in self.__dict__.items():
-            dic[k] = v
+            if k is 'created_at' or k is 'updated_at':
+                dic[k]= v.isoformat()
+            else:
+                dic[k] = v
         return dic
