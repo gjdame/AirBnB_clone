@@ -56,7 +56,7 @@ class BaseModel():
         dic = {}
         dic["__class__"] = self.__class__.__name__
         for k, v in self.__dict__.items():
-            if k is 'created_at' or k is 'updated_at':
+            if isinstance(v, (datetime, )):
                 dic[k]= v.isoformat()
             else:
                 dic[k] = v
