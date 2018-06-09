@@ -3,6 +3,7 @@
 import json
 from models.base_model import BaseModel
 
+
 class FileStorage:
     '''serializes and deserialzes json files'''
 
@@ -10,13 +11,16 @@ class FileStorage:
     __objects = {}
 
     def all(self):
+        '''Return dictionary of <class>.<id> : object instance'''
         return self.__objects
 
     def new(self, obj):
-        key = '{}{}'.format(obj.__class__.__name__, obj.id)
+        '''Add new obj to existing dictionary of instances'''
+        key = '{}.{}'.format(obj.__class__.__name__, obj.id)
         self.__objects[key] = obj
 
     def save(self):
+        '''Save obj dictionaries to json file'''
         my_dict = {}
         if self.__objects:
             for key, obj in self.__objects.items():
@@ -28,6 +32,7 @@ class FileStorage:
                 json.dump(my_dict, f)
 
     def reload(self):
+        '''If json file exists, convert obj dicts back to instances'''
         try:
             with open(self.__file_path, 'r') as f:
                 new_obj = json.load(f)
