@@ -27,7 +27,7 @@ class BaseModel():
                 self.id = str(uuid4())
             if "created_at" in kwargs.keys():
                 self.created_at = datetime.strptime(kwargs["created_at"],
-                                                        "%Y-%m-%dT%H:%M:%S.%f")
+                                                    "%Y-%m-%dT%H:%M:%S.%f")
             else:
                 self.created_at = datetime.now()
             if "updated_at" in kwargs.keys():
@@ -57,7 +57,7 @@ class BaseModel():
         dic["__class__"] = self.__class__.__name__
         for k, v in self.__dict__.items():
             if isinstance(v, (datetime, )):
-                dic[k]= v.isoformat()
+                dic[k] = v.isoformat()
             else:
                 dic[k] = v
         return dic
