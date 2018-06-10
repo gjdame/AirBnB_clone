@@ -126,17 +126,15 @@ class HBNBCommand(cmd.Cmd):
         args = line.split('.')
         arg1 = args[0]
         if arg1 not in HBNBCommand.classes:
-            print("**invalid syntax**")
+            print("*** Unknown syntax: {}".format(line))
             return
         args = args[1].split('(')
         arg2 = args[0]
         args = args[1].split(')')
         arg3 = args[0]
         arg3 = arg3.strip("'")
-        print(type(arg2))
         if arg2 in functions:
             if arg2 == 'all':
-                print('inside all if')
                 HBNBCommand.do_all(self, arg1)
             elif arg2 == 'show':
                 arg = arg1 + ' ' + arg3
@@ -145,7 +143,8 @@ class HBNBCommand(cmd.Cmd):
                 arg = arg1 + ' ' + arg3
                 HBNBCommand.do_destroy(self, arg)
         else:
-            print("**invalid syntax**")
+            print("*** Unknown syntax: {}".format(line))
+
 def parse(line):
     """Helper method to parse user typed input"""
     return tuple(line.split())
