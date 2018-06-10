@@ -123,30 +123,41 @@ class HBNBCommand(cmd.Cmd):
     def default(self, line):
         """accepts class name followed by arguement"""
         args = line.split('.')
-        arg1 = args[0]
-        if arg1 not in HBNBCommand.classes or len(args) == 1:
+        class_arg = args[0]
+        if len(args) == 1:
             print("*** Unknown syntax: {}".format(line))
             return
         try:
             args = args[1].split('(')
-            arg2 = args[0]
-            print(args)
-            args = args[1].split(',')
-            arg3 = args[0]
-            arg3 = arg3.strip("'")
-            if arg2 == 'all':
+            command = args[0]
+            if command == 'all':
                 HBNBCommand.do_all(self, arg1)
-            elif arg2 == 'show':
-                arg = arg1 + ' ' + arg3
-                HBNBCommand.do_show(self, arg)
-            elif arg2 == 'destroy':
-                arg = arg1 + ' ' + arg3
-                HBNBCommand.do_destroy(self, arg)
-            elif arg2 == 'update':
+            elif command == 'show':
                 args = args[1].split(')')
-                arg4 = args[0]
-                arg4 = arg4.strip("'")
-                arg = arg1 + ' ' + arg3 + ' ' + arg4
+                id_arg = args[0]
+                id_arg = id_arg.strip("'")
+                id_arg = id_arg.strip('"')
+                arg = class_arg + ' ' + id_arg
+                HBNBCommand.do_show(self, arg)
+            elif command == 'destroy':
+                args = args[1].split(')')
+                id_arg = args[0]
+                id_arg = id_arg.strip('"')
+                id_arg = id_arg.strip("'")
+                arg = class_arg + ' ' + id_arg
+                HBNBCommand.do_destroy(self, arg)
+            elif command == 'update':
+                args = args[1].split(',')
+                id_arg = args[0].strip("'")
+                id_arg = id_arg.strip('"')
+                name_arg = args[1].strip(',')
+                val_arg = args[2]
+                name_arg = name_arg.strip("'")
+                name_arg = name_arg.strip('"')
+                val_arg = val_arg.strip("'")
+                val_arg = val_arg.strip('"')
+                val_arg = val_arg.strip(')')
+                arg = class_arg + ' ' + id_arg + ' ' + name_arg + ' ' + val_arg
                 HBNBCommand.do_update(self, arg)
             else:
                 print("*** Unknown syntax: {}".format(line))
