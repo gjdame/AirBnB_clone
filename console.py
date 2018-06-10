@@ -122,18 +122,18 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """accepts class name followed by arguement"""
-        functions = ['all', 'show', 'destroy']
         args = line.split('.')
         arg1 = args[0]
-        if arg1 not in HBNBCommand.classes:
+        if arg1 not in HBNBCommand.classes or len(args) == 1:
             print("*** Unknown syntax: {}".format(line))
             return
-        args = args[1].split('(')
-        arg2 = args[0]
-        args = args[1].split(')')
-        arg3 = args[0]
-        arg3 = arg3.strip("'")
-        if arg2 in functions:
+        try:
+            args = args[1].split('(')
+            arg2 = args[0]
+            print(args)
+            args = args[1].split(',')
+            arg3 = args[0]
+            arg3 = arg3.strip("'")
             if arg2 == 'all':
                 HBNBCommand.do_all(self, arg1)
             elif arg2 == 'show':
@@ -142,9 +142,16 @@ class HBNBCommand(cmd.Cmd):
             elif arg2 == 'destroy':
                 arg = arg1 + ' ' + arg3
                 HBNBCommand.do_destroy(self, arg)
-        else:
+            elif arg2 == 'update':
+                args = args[1].split(')')
+                arg4 = args[0]
+                arg4 = arg4.strip("'")
+                arg = arg1 + ' ' + arg3 + ' ' + arg4
+                HBNBCommand.do_update(self, arg)
+            else:
+                print("*** Unknown syntax: {}".format(line))
+        except IndexError:
             print("*** Unknown syntax: {}".format(line))
-
 def parse(line):
     """Helper method to parse user typed input"""
     return tuple(line.split())
