@@ -5,14 +5,19 @@ Entry to command interpreter
 import cmd
 from models import storage
 from models.base_model import BaseModel
-
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """
     Entry to command interpreter
     """
     prompt = "(hbnb)"
-    classes = {"BaseModel", "State", "City", "Amenity", "Place", "Review"}
+    classes = {"BaseModel", "State", "City", "Amenity", "Place", "Review", "User"}
 
     def do_EOF(self, line):
         """Exit on Ctrl-D"""
@@ -115,7 +120,38 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** value missing **")
 
-
+    def default(self, line):
+        """accepts class name followed by arguement"""
+        args = line.split('.')
+        arg1 = args[0]
+        if arg1 not in HBNBCommand.classes or len(args) == 1:
+            print("*** Unknown syntax: {}".format(line))
+            return
+        try:
+            args = args[1].split('(')
+            arg2 = args[0]
+            print(args)
+            args = args[1].split(',')
+            arg3 = args[0]
+            arg3 = arg3.strip("'")
+            if arg2 == 'all':
+                HBNBCommand.do_all(self, arg1)
+            elif arg2 == 'show':
+                arg = arg1 + ' ' + arg3
+                HBNBCommand.do_show(self, arg)
+            elif arg2 == 'destroy':
+                arg = arg1 + ' ' + arg3
+                HBNBCommand.do_destroy(self, arg)
+            elif arg2 == 'update':
+                args = args[1].split(')')
+                arg4 = args[0]
+                arg4 = arg4.strip("'")
+                arg = arg1 + ' ' + arg3 + ' ' + arg4
+                HBNBCommand.do_update(self, arg)
+            else:
+                print("*** Unknown syntax: {}".format(line))
+        except IndexError:
+            print("*** Unknown syntax: {}".format(line))
 def parse(line):
     """Helper method to parse user typed input"""
     return tuple(line.split())
