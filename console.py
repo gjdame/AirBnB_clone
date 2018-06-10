@@ -120,7 +120,32 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** value missing **")
 
-
+    def default(self, line):
+        """accepts class name followed by arguement"""
+        functions = ['all', 'show', 'destroy']
+        args = line.split('.')
+        arg1 = args[0]
+        if arg1 not in HBNBCommand.classes:
+            print("**invalid syntax**")
+            return
+        args = args[1].split('(')
+        arg2 = args[0]
+        args = args[1].split(')')
+        arg3 = args[0]
+        arg3 = arg3.strip("'")
+        print(type(arg2))
+        if arg2 in functions:
+            if arg2 == 'all':
+                print('inside all if')
+                HBNBCommand.do_all(self, arg1)
+            elif arg2 == 'show':
+                arg = arg1 + ' ' + arg3
+                HBNBCommand.do_show(self, arg)
+            elif arg2 == 'destroy':
+                arg = arg1 + ' ' + arg3
+                HBNBCommand.do_destroy(self, arg)
+        else:
+            print("**invalid syntax**")
 def parse(line):
     """Helper method to parse user typed input"""
     return tuple(line.split())
