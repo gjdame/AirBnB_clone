@@ -9,7 +9,6 @@
 > to manipulate the object instances.
 
 #### How to Use Command Interpreter
-To manage the objects of the project and do operations on objects (count, compute stats, etc…)
 ---
 | Commands  | Sample Usage                                  | Functionality                              |
 | --------- | --------------------------------------------- | ------------------------------------------ |
