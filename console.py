@@ -155,12 +155,15 @@ class HBNBCommand(cmd.Cmd):
                 id_arg = id_arg.strip('"')
                 name_arg = args[1].strip(',')
                 val_arg = args[2]
+                name_arg = name_arg.strip(' ')
                 name_arg = name_arg.strip("'")
                 name_arg = name_arg.strip('"')
+                val_arg = val_arg.strip(' ')
+                val_arg = val_arg.strip(')')
                 val_arg = val_arg.strip("'")
                 val_arg = val_arg.strip('"')
-                val_arg = val_arg.strip(')')
                 arg = class_arg + ' ' + id_arg + ' ' + name_arg + ' ' + val_arg
+                print(arg)
                 HBNBCommand.do_update(self, arg)
             else:
                 print("*** Unknown syntax: {}".format(line))
