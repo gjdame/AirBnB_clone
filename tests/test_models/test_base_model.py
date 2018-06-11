@@ -24,7 +24,7 @@ class TestBaseModel(unittest.TestCase):
         except:
             pass
 
-    def style_check(self):
+    def test_style_check(self):
         """
         Tests pep8 style
         """
@@ -32,7 +32,7 @@ class TestBaseModel(unittest.TestCase):
         p = style.check_files(['models/base_model.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
 
-    def checking_for_functions(self):
+    def test_checking_for_functions(self):
         self.assertIsNotNone(BaseModel.__doc__)
         self.assertIsNotNone(save.__doc__)
         self.assertIsNotNone(to_dict.__doc__)
