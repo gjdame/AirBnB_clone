@@ -123,8 +123,19 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** value missing **")
 
+    def do_count(self, line):
+        """Display count of instances specified"""
+        if line in HBNBCommand.classes:
+            count = 0
+            for key, objs in storage.all().items():
+                if line in key:
+                    count += 1
+            print(count)
+        else:
+            print("** class doesn't exist **")
+
     def default(self, line):
-        """accepts class name followed by arguement"""
+        """Accepts class name followed by arguement"""
         args = line.split('.')
         class_arg = args[0]
         if len(args) == 1:
@@ -135,6 +146,8 @@ class HBNBCommand(cmd.Cmd):
             command = args[0]
             if command == 'all':
                 HBNBCommand.do_all(self, class_arg)
+            elif command == 'count':
+                HBNBCommand.do_count(self, class_arg)
             elif command == 'show':
                 args = args[1].split(')')
                 id_arg = args[0]
