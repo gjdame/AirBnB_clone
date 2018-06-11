@@ -19,6 +19,12 @@ class TestCity(unittest.TestCase):
     def teardown(cls):
         del cls.city1
 
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except:
+            pass
+
     def test_style_check(self):
         """
         Tests pep8 style
