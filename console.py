@@ -12,15 +12,18 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """
     Entry to command interpreter
     """
     prompt = "(hbnb)"
-    classes = {"BaseModel", "State", "City", "Amenity", "Place", "Review", "User"}
+    classes = {"BaseModel", "State", "City",
+               "Amenity", "Place", "Review", "User"}
 
     def do_EOF(self, line):
         """Exit on Ctrl-D"""
+        print()
         return True
 
     def do_quit(self, line):
@@ -163,6 +166,8 @@ class HBNBCommand(cmd.Cmd):
                 print("*** Unknown syntax: {}".format(line))
         except IndexError:
             print("*** Unknown syntax: {}".format(line))
+
+
 def parse(line):
     """Helper method to parse user typed input"""
     return tuple(line.split())
