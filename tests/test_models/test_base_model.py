@@ -18,6 +18,12 @@ class TestBaseModel(unittest.TestCase):
     def teardown(cls):
         del cls.base1
 
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except:
+            pass
+
     def style_check(self):
         """
         Tests pep8 style
