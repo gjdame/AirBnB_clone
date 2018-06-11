@@ -8,13 +8,18 @@
 > can be activated, take in user input, and perform certain tasks
 > to manipulate the object instances.
 
-#### Command Interpreter
-Manages the objects of the project. Capabilities include:
-- Create a new object (ex: a new User or a new Place)
-- Retrieve an object from a file, a database etc…
-- Do operations on objects (count, compute stats, etc…)
-- Update attributes of an object
-- Destroy an object
+#### How to Use Command Interpreter
+To manage the objects of the project and do operations on objects (count, compute stats, etc…)
+| Commands  | Sample Usage                                  | Functionality                              |
+| --------- | --------------------------------------------- | ------------------------------------------ |
+| `help`    | `help`                                        | displays all commands available            |
+| `create`  | `create <class>`                              | creates new object (ex. a new User, Place) |
+| `update`  | `User.update('123', {'name' : 'Greg_n_Mel'})` | updates attribute of an object             |
+| `destroy` | `User.destroy('123')`                         | destroys specified object                  |
+| `show`    | `User.show('123')`                            | retrieve an object from a file, a database |
+| `all`     | `User.all()`                                  | display all objects in class               |
+| `count`   | `User.count()`                                | returns count of objects in specified class|
+| `quit`    | `quit`                                        | exits                                      |
 
 #### Installation
 ```
@@ -65,5 +70,5 @@ $
 * Style guidelines: [PEP 8 (version 1.7)](https://www.python.org/dev/peps/pep-0008/) \|| [Google Style Python Docstrings](http://sphinxcontrib-napoleon.readthedocs.io/en/l\atest/example_google.html)
 
 ### Authors
-Greg Dame [![M](https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.sv\g/30px-Twitter_Bird.svg.png)](https://twitter.com/gjdame)
-Melissa Ng [![M](https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.sv\g/30px-Twitter_Bird.svg.png)](https://twitter.com/MelissaNg__)
+Greg Dame [![M](https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/30px-Twitter_Bird.svg.png)](https://twitter.com/gjdame)
+Melissa Ng [![M](https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/30px-Twitter_Bird.svg.png)](https://twitter.com/MelissaNg__)
