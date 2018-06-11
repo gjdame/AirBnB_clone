@@ -176,7 +176,6 @@ class HBNBCommand(cmd.Cmd):
                 val_arg = val_arg.strip("'")
                 val_arg = val_arg.strip('"')
                 arg = class_arg + ' ' + id_arg + ' ' + name_arg + ' ' + val_arg
-                print(arg)
                 HBNBCommand.do_update(self, arg)
             else:
                 print("*** Unknown syntax: {}".format(line))
