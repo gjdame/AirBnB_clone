@@ -134,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
             args = args[1].split('(')
             command = args[0]
             if command == 'all':
-                HBNBCommand.do_all(self, arg1)
+                HBNBCommand.do_all(self, class_arg)
             elif command == 'show':
                 args = args[1].split(')')
                 id_arg = args[0]
