@@ -164,7 +164,7 @@ class TestConsole(unittest.TestCase):
         """Test cmd output: <class>.<cmd>"""
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("User.count()")
-            self.assertEqual('0\n', fake_output.getvalue())
+            self.assertEqual(int, type(eval(fake_output.getvalue())))
 
 
 if __name__ == "__main__":
