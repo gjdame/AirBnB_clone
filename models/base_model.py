@@ -20,7 +20,9 @@ class BaseModel():
         to_dict(self)
     """
     def __init__(self, *args, **kwargs):
-        """Initialize attributes: random uuid, dates created/updated"""
+        """Initialize attributes: random uuid, dates created/updated
+
+        """
         if kwargs:
             for key, val in kwargs.items():
                 if "created_at" == key:
