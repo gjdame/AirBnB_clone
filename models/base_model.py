@@ -20,7 +20,9 @@ class BaseModel():
     """
 
     def __init__(self, *args, **kwargs):
-        """Initialize attributes: random uuid, dates created/updated
+        """
+        Initialize attributes: random uuid, dates created/updated
+
 
         """
         if kwargs:
