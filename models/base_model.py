@@ -9,6 +9,7 @@ Module BaseModel
 Parent of all classes
 """
 
+
 class BaseModel():
     """Base class for Airbnb clone project
     Methods:
