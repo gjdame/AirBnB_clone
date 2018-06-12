@@ -16,13 +16,11 @@ class TestCity(unittest.TestCase):
         cls.city1.state_id = "NC"
 
     @classmethod
-    def teardown(cls):
+    def tearDownClass(cls):
         del cls.city1
-
-    def tearDown(self):
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
 
     def test_style_check(self):
@@ -50,13 +48,13 @@ class TestCity(unittest.TestCase):
         self.assertEqual(type(self.city1.name), str)
         self.assertEqual(type(self.city1.state_id), str)
 
-
     def test_save(self):
         self.city1.save()
         self.assertNotEqual(self.city1.created_at, self.city1.updated_at)
 
     def test_to_dict(self):
         self.assertEqual('to_dict' in dir(self.city1), True)
+
 
 if __name__ == "__main__":
     unittest.main()

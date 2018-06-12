@@ -25,13 +25,11 @@ class TestPlace(unittest.TestCase):
         cls.place1.amenity_ids = []
 
     @classmethod
-    def teardown(cls):
+    def tearDownClass(cls):
         del cls.place1
-
-    def tearDown(self):
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
 
     def test_style_check(self):
@@ -64,7 +62,6 @@ class TestPlace(unittest.TestCase):
         self.assertTrue('longitude' in self.place1.__dict__)
         self.assertTrue('amenity_ids' in self.place1.__dict__)
 
-
     def test_attributes_are_strings(self):
         self.assertEqual(type(self.place1.city_id), str)
         self.assertEqual(type(self.place1.user_id), str)
@@ -78,13 +75,13 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(type(self.place1.longitude), float)
         self.assertEqual(type(self.place1.amenity_ids), list)
 
-
     def test_save(self):
         self.place1.save()
         self.assertNotEqual(self.place1.created_at, self.place1.updated_at)
 
     def test_to_dict(self):
         self.assertEqual('to_dict' in dir(self.place1), True)
+
 
 if __name__ == "__main__":
     unittest.main()

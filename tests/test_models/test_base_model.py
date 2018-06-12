@@ -17,10 +17,8 @@ class TestBaseModel(unittest.TestCase):
         cls.base1.my_number = 29
 
     @classmethod
-    def teardown(cls):
+    def tearDownClass(cls):
         del cls.base1
-
-    def tearDown(self):
         try:
             os.remove("file.json")
         except FileNotFoundError:

@@ -15,13 +15,11 @@ class TestAmenity(unittest.TestCase):
         cls.amenity1.name = "Hot Tub"
 
     @classmethod
-    def teardown(cls):
+    def tearDownClass(cls):
         del cls.amenity1
-
-    def tearDown(self):
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
 
     def test_style_check(self):
@@ -53,6 +51,7 @@ class TestAmenity(unittest.TestCase):
 
     def test_to_dict(self):
         self.assertEqual('to_dict' in dir(self.amenity1), True)
+
 
 if __name__ == "__main__":
     unittest.main()

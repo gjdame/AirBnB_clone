@@ -18,13 +18,11 @@ class TestUser(unittest.TestCase):
         cls.my_user.password = "root"
 
     @classmethod
-    def teardown(cls):
+    def tearDownClass(cls):
         del cls.my_user
-
-    def tearDown(self):
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
 
     def test_style_check(self):
@@ -62,6 +60,7 @@ class TestUser(unittest.TestCase):
 
     def test_to_dict(self):
         self.assertEqual('to_dict' in dir(self.my_user), True)
+
 
 if __name__ == "__main__":
     unittest.main()

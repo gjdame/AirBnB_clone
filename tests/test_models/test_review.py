@@ -17,13 +17,11 @@ class TestReview(unittest.TestCase):
         cls.rev1.text = "Grade A"
 
     @classmethod
-    def teardown(cls):
+    def tearDownClass(cls):
         del cls.rev1
-
-    def tearDown(self):
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
 
     def test_style_check(self):
@@ -53,13 +51,13 @@ class TestReview(unittest.TestCase):
         self.assertEqual(type(self.rev1.place_id), str)
         self.assertEqual(type(self.rev1.user_id), str)
 
-
     def test_save(self):
         self.rev1.save()
         self.assertNotEqual(self.rev1.created_at, self.rev1.updated_at)
 
     def test_to_dict(self):
         self.assertEqual('to_dict' in dir(self.rev1), True)
+
 
 if __name__ == "__main__":
     unittest.main()

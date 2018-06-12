@@ -18,6 +18,7 @@ class BaseModel():
         __repr__(self)
         to_dict(self)
     """
+
     def __init__(self, *args, **kwargs):
         """Initialize attributes: random uuid, dates created/updated
 

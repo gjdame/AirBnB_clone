@@ -15,13 +15,11 @@ class TestState(unittest.TestCase):
         cls.state1.name = "North_Carolina_AKA_THE_BEST_STATE"
 
     @classmethod
-    def teardown(cls):
+    def tearDownClass(cls):
         del cls.state1
-
-    def tearDown(self):
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
 
     def test_style_check(self):
@@ -53,6 +51,7 @@ class TestState(unittest.TestCase):
 
     def test_to_dict(self):
         self.assertEqual('to_dict' in dir(self.state1), True)
+
 
 if __name__ == "__main__":
     unittest.main()
