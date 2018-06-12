@@ -23,11 +23,13 @@ from models.engine.file_storage import FileStorage
 class TestConsole(unittest.TestCase):
 
     """Unittest for command interpreter"""
-    def setUp(self):
+    @classmethod
+    def setUpClass(self):
         """Set up test"""
         self.typing = console.HBNBCommand()
 
-    def tearDown(self):
+    @classmethod
+    def tearDownClass(self):
         """Remove temporary file (file.json) created as a result"""
         try:
             os.remove("file.json")
