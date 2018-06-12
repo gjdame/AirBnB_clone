@@ -16,6 +16,7 @@ class BaseModel():
         __init__(self, *args, **kwargs)
         __str__(self)
         __save(self)
+        __repr__(self)
         to_dict(self)
     """
     def __init__(self, *args, **kwargs):
@@ -42,6 +43,10 @@ class BaseModel():
         """Return string of info about model"""
         return ('[{}] ({}) {}'.
                 format(self.__class__.__name__, self.id, self.__dict__))
+
+    def __repr__(self):
+        """returns string representation"""
+        return (self.__str__())
 
     def save(self):
         """Update instance with updated time & save to serialized file"""

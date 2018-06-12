@@ -80,6 +80,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
                 else:
                     del storage.all()[name]
+                    storage.save()
         except IndexError:
             print("** instance id missing **")
 
@@ -89,17 +90,13 @@ class HBNBCommand(cmd.Cmd):
         obj_list = []
         if len(line) == 0:
             for objs in storage.all().values():
-                obj_list.append(str(objs))
-            print("[", end="")
-            print(", ".join(o for o in obj_list), end="")
-            print("]")
+                obj_list.append(objs)
+            print(obj_list)
         elif args[0] in HBNBCommand.classes:
             for key, objs in storage.all().items():
                 if args[0] in key:
-                    obj_list.append(str(objs))
-            print("[", end="")
-            print(", ".join(o for o in obj_list), end="")
-            print("]")
+                    obj_list.append(objs)
+            print(obj_list)
         else:
             print("** class doesn't exist **")
 
