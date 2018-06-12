@@ -1,14 +1,13 @@
 #!/usr/bin/python3
-"""
-Module BaseModel
-Parent of all classes
-"""
-import cmd
 from datetime import datetime
 from uuid import uuid4
 import json
 import models
 
+"""
+Module BaseModel
+Parent of all classes
+"""
 
 class BaseModel():
     """Base class for Airbnb clone project
