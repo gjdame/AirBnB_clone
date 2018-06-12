@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""user class"""
-from models.base_model import BaseModel
+"""user class
+"""
 
-import json
+from models.base_model import BaseModel
 
 
 class User(BaseModel):
