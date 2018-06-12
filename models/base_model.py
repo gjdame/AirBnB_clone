@@ -41,21 +41,29 @@ class BaseModel():
             models.storage.new(self)
 
     def __str__(self):
-        """Return string of info about model"""
+        """
+        Return string of info about model
+        """
         return ('[{}] ({}) {}'.
                 format(self.__class__.__name__, self.id, self.__dict__))
 
     def __repr__(self):
-        """returns string representation"""
+        """
+        returns string representation
+        """
         return (self.__str__())
 
     def save(self):
-        """Update instance with updated time & save to serialized file"""
+        """
+        Update instance with updated time & save to serialized file
+        """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """Return dic with string formats of times; add class info to dic"""
+        """
+        Return dic with string formats of times; add class info to dic
+        """
         dic = {}
         dic["__class__"] = self.__class__.__name__
         for k, v in self.__dict__.items():
