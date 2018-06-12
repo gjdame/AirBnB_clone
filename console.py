@@ -171,8 +171,6 @@ class HBNBCommand(cmd.Cmd):
                 name_arg = name_arg.strip('"')
                 val_arg = val_arg.strip(' ')
                 val_arg = val_arg.strip(')')
-                val_arg = val_arg.strip("'")
-                val_arg = val_arg.strip('"')
                 arg = class_arg + ' ' + id_arg + ' ' + name_arg + ' ' + val_arg
                 HBNBCommand.do_update(self, arg)
             else:
