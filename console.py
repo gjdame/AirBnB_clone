@@ -109,7 +109,6 @@ class HBNBCommand(cmd.Cmd):
             arg3 = args[3]
             arg3 = arg3.strip('"')
             arg3 = arg3.strip("'")
-            print(arg3)
             setattr(storage.all()[key], args[2], cast(arg3))
             storage.all()[key].save()
         elif len(args) == 0:
