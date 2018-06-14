@@ -37,7 +37,7 @@ class FileStorage:
             '''if type(obj) is dict:
             my_dict[key] = obj
             else:'''
-            my_dict[key] = obj_dict.to_dict()
+            my_dict[key] = obj.to_dict()
         with open(self.__file_path, 'w') as f:
             json.dump(my_dict, f)
 
