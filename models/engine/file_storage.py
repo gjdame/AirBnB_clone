@@ -32,14 +32,14 @@ class FileStorage:
     def save(self):
         '''Save obj dictionaries to json file'''
         my_dict = {}
-        if self.__objects:
-            for key, obj in self.__objects.items():
-                '''if type(obj) is dict:
-                    my_dict[key] = obj
-                else:'''
-                my_dict[key] = obj.to_dict()
-            with open(self.__file_path, 'w+') as f:
-                json.dump(my_dict, f)
+
+        for key, obj in self.__objects.items():
+            '''if type(obj) is dict:
+            my_dict[key] = obj
+            else:'''
+            my_dict[key] = obj_dict.to_dict()
+        with open(self.__file_path, 'w') as f:
+            json.dump(my_dict, f)
 
     def reload(self):
         '''If json file exists, convert obj dicts back to instances'''
