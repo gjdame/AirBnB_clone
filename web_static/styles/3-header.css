@@ -4,10 +4,9 @@ header{
     border-bottom-color: #CCCCCC;
     height: 70px;
     width: 100%;
-    position: fixed;   
 }
 
 header. logo {
-    background: url('../images/logo.png');
+    background: url('../images/logo.png') no-repeat;
     margin-left: 20px;
 }
