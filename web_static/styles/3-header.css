@@ -1,0 +1,12 @@
+header{
+    background-color: white;
+    border-bottom: 1px solid;
+    border-bottom-color: #CCCCCC;
+    height: 70px;
+    width: 100%;
+    position: fixed;   
+}
+
+#logo {
+    text-align: center
+}
