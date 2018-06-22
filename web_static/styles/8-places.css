@@ -22,12 +22,14 @@
     justify-content: center;
 }
 .places h2, .places .price_by_night {
-    display: inline;
+    display: inline-flex;
 }
 .places .price_by_night{
     color: #ff5a5f;
     border: 4px solid #ff5a5f;
     border-radius: 50%;
+    text-align: center;
+    justify-content: center;
     min-width: 60px;
     height: 60px;
     float: right;
@@ -39,7 +41,8 @@
 
 .information{
     display: flex;
-    margin-top: 10%;
+    margin-left: 10%;
+    margin-top: 0;
     background-position: top;
     text-align: left;
     height: 80px;
